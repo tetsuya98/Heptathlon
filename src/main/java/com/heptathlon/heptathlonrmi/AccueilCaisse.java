@@ -103,7 +103,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
         btn_consultFact = new javax.swing.JButton();
         btn_creaFact = new javax.swing.JButton();
         btn_CA = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         Tableau_factures = new javax.swing.JScrollPane();
         liste_factures = new javax.swing.JTable();
         btn_voir_facture = new javax.swing.JButton();
@@ -738,8 +737,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("facture en fin de journée ( à faire)");
-
         liste_factures.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -853,10 +850,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_quit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btn_CA, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_CA, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Tableau_factures, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Tableau_articles, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -866,7 +861,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_visualiser_art)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -879,10 +874,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
                         .addComponent(btn_creaFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_consultFact)
-                        .addGap(50, 50, 50)
-                        .addComponent(btn_CA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_CA))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Tableau_articles, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -1040,7 +1033,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
             String client = TF_client_nom.getText();
             int last_facture_numero = stub.getNumero("facture");
-            last_facture_numero += 2;           
+            last_facture_numero += 1;           
 
             for (int i = 0; i < nb_ligne_prefacture;i++){  
                 for (int j = 0; j < nb_ligne_table_articles;j++){
@@ -1337,7 +1330,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JButton btn_voir_facture;
     private org.jdesktop.swingx.JXDatePicker dateDebut;
     private org.jdesktop.swingx.JXDatePicker dateFin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable liste_articles;
     private javax.swing.JScrollPane liste_facture;
