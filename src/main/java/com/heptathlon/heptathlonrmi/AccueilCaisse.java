@@ -77,10 +77,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
         TF_qte_art_fact = new javax.swing.JTextField();
         Label_ajout_art_qte_fact = new javax.swing.JLabel();
         Label_stock_insuffisant = new javax.swing.JLabel();
-        ConsultationFactureDialog = new javax.swing.JDialog();
-        Label_Consult_Facture = new javax.swing.JLabel();
-        TF_Consult_Facture = new javax.swing.JTextField();
-        boutonValiderRechercheFacture = new javax.swing.JButton();
         Resultat_recherche_facture = new javax.swing.JDialog();
         liste_facture = new javax.swing.JScrollPane();
         Liste_resultat_recherche_fact = new javax.swing.JTable();
@@ -90,6 +86,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
         ComboPay = new javax.swing.JComboBox<>();
         TF_chercher_facture = new javax.swing.JTextField();
         btn_chercher_facture = new javax.swing.JButton();
+        btn_quitter_fact = new javax.swing.JButton();
         Calcul_CA_Dialog = new javax.swing.JDialog();
         Label_date_CA_debut = new javax.swing.JLabel();
         btn_calculerCA = new javax.swing.JButton();
@@ -204,11 +201,11 @@ public class AccueilCaisse extends javax.swing.JFrame {
         );
 
         CreationFacture.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        CreationFacture.setTitle("Pre - facture");
-        CreationFacture.setAlwaysOnTop(true);
+        CreationFacture.setTitle("Création Facture");
         CreationFacture.setLocation(new java.awt.Point(150, 150));
         CreationFacture.setResizable(false);
-        CreationFacture.setSize(new java.awt.Dimension(450, 450));
+        CreationFacture.setSize(new java.awt.Dimension(700, 400));
+        CreationFacture.setType(java.awt.Window.Type.UTILITY);
 
         boutonCreerFacture.setText("Créer facture");
         boutonCreerFacture.setToolTipText("");
@@ -271,7 +268,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
         });
 
-        Label_numero_facture.setText("Numéro facture");
+        Label_numero_facture.setText("Numéro facture :");
         Label_numero_facture.setToolTipText("");
 
         Label_numero_facture1.setText("Client :");
@@ -284,60 +281,46 @@ public class AccueilCaisse extends javax.swing.JFrame {
         CreationFactureLayout.setHorizontalGroup(
             CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreationFactureLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CreationFactureLayout.createSequentialGroup()
                         .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(CreationFactureLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(btn_Fact_add_line, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(285, 285, 285)
+                                .addComponent(Label_numero_facture1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(TF_client_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CreationFactureLayout.createSequentialGroup()
+                                .addGap(205, 205, 205)
                                 .addComponent(Label_numero_facture, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(99, 99, 99)
-                                .addComponent(TF_Montant_total, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                                .addComponent(Label_erreur_stock)
-                                .addGap(228, 228, 228))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                                .addComponent(Label_numero_facture1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(TF_client_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
-            .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                    .addContainerGap(679, Short.MAX_VALUE)
-                    .addComponent(boutonCreerFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(19, 19, 19)))
+                                .addGap(6, 6, 6)
+                                .addComponent(boutonCreerFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(TF_Montant_total, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 272, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         CreationFactureLayout.setVerticalGroup(
             CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreationFactureLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_Fact_add_line, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_numero_facture1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_client_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
+                .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Fact_add_line, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(CreationFactureLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(Label_numero_facture1))
+                    .addGroup(CreationFactureLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(TF_client_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Label_numero_facture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_Montant_total))
-                .addGap(53, 53, 53)
-                .addComponent(Label_erreur_stock)
-                .addGap(32, 32, 32))
-            .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationFactureLayout.createSequentialGroup()
-                    .addContainerGap(419, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(CreationFactureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_numero_facture, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boutonCreerFacture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)))
+                    .addComponent(TF_Montant_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         AjoutArtFactDialog.setTitle("Ajout article pour pre - facture");
@@ -406,57 +389,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_ajout_ligne_fact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
-        );
-
-        ConsultationFactureDialog.setTitle("Consultation facture");
-        ConsultationFactureDialog.setAlwaysOnTop(true);
-        ConsultationFactureDialog.setLocation(new java.awt.Point(150, 150));
-        ConsultationFactureDialog.setResizable(false);
-        ConsultationFactureDialog.setSize(new java.awt.Dimension(450, 450));
-
-        Label_Consult_Facture.setText("Recherche par facture");
-        Label_Consult_Facture.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        TF_Consult_Facture.setToolTipText("");
-        TF_Consult_Facture.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        boutonValiderRechercheFacture.setText("Valider");
-        boutonValiderRechercheFacture.setToolTipText("");
-        boutonValiderRechercheFacture.setMaximumSize(new java.awt.Dimension(450, 450));
-        boutonValiderRechercheFacture.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boutonValiderRechercheFactureMouseClicked(evt);
-            }
-        });
-        boutonValiderRechercheFacture.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonValiderRechercheFactureActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ConsultationFactureDialogLayout = new javax.swing.GroupLayout(ConsultationFactureDialog.getContentPane());
-        ConsultationFactureDialog.getContentPane().setLayout(ConsultationFactureDialogLayout);
-        ConsultationFactureDialogLayout.setHorizontalGroup(
-            ConsultationFactureDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationFactureDialogLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(Label_Consult_Facture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(ConsultationFactureDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boutonValiderRechercheFacture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_Consult_Facture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        ConsultationFactureDialogLayout.setVerticalGroup(
-            ConsultationFactureDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationFactureDialogLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(ConsultationFactureDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TF_Consult_Facture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_Consult_Facture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(boutonValiderRechercheFacture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         Resultat_recherche_facture.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -531,6 +463,18 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
         });
 
+        btn_quitter_fact.setText("Quitter");
+        btn_quitter_fact.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_quitter_factMouseClicked(evt);
+            }
+        });
+        btn_quitter_fact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quitter_factActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Resultat_recherche_factureLayout = new javax.swing.GroupLayout(Resultat_recherche_facture.getContentPane());
         Resultat_recherche_facture.getContentPane().setLayout(Resultat_recherche_factureLayout);
         Resultat_recherche_factureLayout.setHorizontalGroup(
@@ -544,14 +488,15 @@ public class AccueilCaisse extends javax.swing.JFrame {
                             .addComponent(TF_Montant_total_Consult_Fact, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(ComboPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btn_paiement_fact, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_paiement_fact, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_quitter_fact, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Resultat_recherche_factureLayout.createSequentialGroup()
                         .addComponent(Label_Fact_numero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TF_chercher_facture, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_chercher_facture)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Resultat_recherche_factureLayout.setVerticalGroup(
             Resultat_recherche_factureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,13 +514,15 @@ public class AccueilCaisse extends javax.swing.JFrame {
                     .addComponent(ComboPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_paiement_fact)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_quitter_fact)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Calcul_CA_Dialog.setTitle("Calcul CA");
+        Calcul_CA_Dialog.setTitle("Chiffre d'Affaire");
         Calcul_CA_Dialog.setAlwaysOnTop(true);
         Calcul_CA_Dialog.setLocation(new java.awt.Point(150, 150));
-        Calcul_CA_Dialog.setSize(new java.awt.Dimension(878, 160));
+        Calcul_CA_Dialog.setSize(new java.awt.Dimension(600, 250));
 
         Label_date_CA_debut.setText("Date de début");
         Label_date_CA_debut.setMaximumSize(new java.awt.Dimension(450, 450));
@@ -592,7 +539,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
         Label_date_CA_fin.setText("Date de fin");
         Label_date_CA_fin.setMaximumSize(new java.awt.Dimension(450, 450));
 
-        Label_CA_Total.setText("Total CA");
+        Label_CA_Total.setText("Chiffre d'Affaire : ");
 
         dateDebut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -611,44 +558,39 @@ public class AccueilCaisse extends javax.swing.JFrame {
         Calcul_CA_DialogLayout.setHorizontalGroup(
             Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(Label_date_CA_debut, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(141, 141, 141)
-                        .addComponent(Label_date_CA_fin, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_date_CA_debut, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_date_CA_fin, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                        .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(Label_CA_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(69, 69, 69)
-                        .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Calcul_CA_DialogLayout.createSequentialGroup()
-                                .addComponent(btn_calculerCA, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)))))
-                .addContainerGap(263, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(Label_CA_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_calculerCA, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         Calcul_CA_DialogLayout.setVerticalGroup(
             Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_date_CA_debut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_date_CA_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
                 .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addGroup(Calcul_CA_DialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_calculerCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_CA_Total))
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -800,76 +742,77 @@ public class AccueilCaisse extends javax.swing.JFrame {
 
         liste_factures.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Reference", "Montant", "Client"
+                "Reference", "Montant", "Client", "Payer"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Double.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        liste_factures.setColumnSelectionAllowed(true);
         liste_factures.setRowSelectionAllowed(false);
         liste_factures.getTableHeader().setReorderingAllowed(false);
         Tableau_factures.setViewportView(liste_factures);
@@ -1097,8 +1040,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
             String client = TF_client_nom.getText();
             int last_facture_numero = stub.getNumero("facture");
-            last_facture_numero++;           
-            
+            last_facture_numero += 2;           
+
             for (int i = 0; i < nb_ligne_prefacture;i++){  
                 for (int j = 0; j < nb_ligne_table_articles;j++){
                     if ( ref_stock_prefacture[i][0].equals(table_articles[j][0])){
@@ -1118,7 +1061,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
                     }      
                 }         
             } 
-            int num = stub.getNumero("facture") + 1;
             Label_numero_facture.setText("Numéro facture : " + stub.getNumero("facture")); 
             showArticles();
         } catch (Exception e) {           
@@ -1172,12 +1114,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btn_ajout_ligne_factMouseClicked
    
-    // BOUTON RECHERCHER DEPUIS RECHERCHE FACTURE DIALOG
-    private void boutonValiderRechercheFactureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderRechercheFactureMouseClicked
-        
-          
-    }//GEN-LAST:event_boutonValiderRechercheFactureMouseClicked
-    
+   
     // BOUTON CONSULTATION FACTURE DEPUIS ACCUEIL
     private void btn_consultFactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_consultFactMouseClicked
 
@@ -1205,7 +1142,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
         } catch (Exception e) {           
             e.printStackTrace();
         } 
-        Label_CA_Total.setText("CA = "+String.valueOf(CA));     
+        Label_CA_Total.setText("Chiffre d'Affaire : "+String.valueOf(CA));     
     }//GEN-LAST:event_btn_calculerCAMouseClicked
 
     private void dateDebutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDebutActionPerformed
@@ -1235,6 +1172,10 @@ public class AccueilCaisse extends javax.swing.JFrame {
                             liste_factures.setValueAt(ref, i, 0);
                             liste_factures.setValueAt(montant, i, 1);
                             liste_factures.setValueAt(client, i, 2);
+                            if (stub.isPaid(""+ref))
+                                liste_factures.setValueAt("Payer", i, 3);
+                            else
+                                liste_factures.setValueAt("", i, 3);
                             i++; 
                             ref = list.get(j).getRef_facture();
                             montant = list.get(j).getMontant();
@@ -1243,6 +1184,10 @@ public class AccueilCaisse extends javax.swing.JFrame {
                         liste_factures.setValueAt(ref, i, 0);
                         liste_factures.setValueAt(montant, i, 1);
                         liste_factures.setValueAt(client, i, 2);
+                        if (stub.isPaid(""+ref))
+                            liste_factures.setValueAt("Payer", i, 3);
+                        else
+                            liste_factures.setValueAt("", i, 3);
                     }
                 }
             }
@@ -1256,15 +1201,14 @@ public class AccueilCaisse extends javax.swing.JFrame {
         Resultat_recherche_facture.setVisible(true);
     }//GEN-LAST:event_btn_consultFactActionPerformed
 
-    private void boutonValiderRechercheFactureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonValiderRechercheFactureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boutonValiderRechercheFactureActionPerformed
-
     private void btn_chercher_factureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chercher_factureActionPerformed
+        start();
         int ref = Integer.parseInt(TF_chercher_facture.getText());
-        Label_Fact_numero.setText("Facture");
-        try {
-            List<Facture> list = stub.getFacture(ref);
+        List<Facture> list = new ArrayList<>(); 
+        Label_Fact_numero.setText("Facture : ");
+        montantFacture = 0;
+        try {  
+            list = stub.getFacture(ref);
             int i=0;
             for (Facture s:list) {
                 Liste_resultat_recherche_fact.setValueAt(s.getRef_article(),i, 0);
@@ -1277,6 +1221,10 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 TF_Montant_total_Consult_Fact.setText(String.valueOf(montantFacture));
                 i++;
             }
+            if (stub.isPaid(TF_chercher_facture.getText())) 
+                btn_paiement_fact.setEnabled(false);
+            else
+                btn_paiement_fact.setEnabled(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1285,20 +1233,30 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // BOUTON PAIEMENT FACTURE DEPUIS CONSULTATION FACTURE
     private void btn_paiement_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_paiement_factMouseClicked
         start();
+        int num_facture = Integer.parseInt(TF_chercher_facture.getText());
         try {
             btn_paiement_fact.setText("Payer");
             if (!"".equals(TF_chercher_facture.getText())) {
-                int num_facture = Integer.parseInt(TF_chercher_facture.getText());
+                
                 double montant = montantFacture;
                 java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
                 String moyen = ComboPay.getSelectedItem().toString();
                 stub.addPaiement(num_facture+"", montant+"", date+"", moyen);
+                stub.updateFacture(""+num_facture);
                 Resultat_recherche_facture.setVisible(false);
             }
         } catch (Exception e) {
             btn_paiement_fact.setText("Erreur");
         }
     }//GEN-LAST:event_btn_paiement_factMouseClicked
+
+    private void btn_quitter_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_quitter_factMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_quitter_factMouseClicked
+
+    private void btn_quitter_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitter_factActionPerformed
+        Resultat_recherche_facture.setVisible(false);
+    }//GEN-LAST:event_btn_quitter_factActionPerformed
 
     private void btn_quitMouseClicked(java.awt.event.ActionEvent evt) {
         
@@ -1332,12 +1290,10 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JDialog AjoutArtFactDialog;
     private javax.swing.JDialog Calcul_CA_Dialog;
     private javax.swing.JComboBox<String> ComboPay;
-    private javax.swing.JDialog ConsultationFactureDialog;
     private javax.swing.JDialog ConsultationFamille;
     private javax.swing.JDialog ConsultationRef;
     private javax.swing.JDialog CreationFacture;
     private javax.swing.JLabel Label_CA_Total;
-    private javax.swing.JLabel Label_Consult_Facture;
     private javax.swing.JLabel Label_Consult_Famille;
     private javax.swing.JLabel Label_Consult_Ref;
     private javax.swing.JLabel Label_Fact_numero;
@@ -1352,7 +1308,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JTable Liste_PreFacture;
     private javax.swing.JTable Liste_resultat_recherche_fact;
     private javax.swing.JDialog Resultat_recherche_facture;
-    private javax.swing.JTextField TF_Consult_Facture;
     private javax.swing.JTextField TF_Consult_Famille;
     private javax.swing.JTextField TF_Consult_Ref;
     private javax.swing.JTextField TF_Montant_total;
@@ -1366,7 +1321,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JButton boutonCreerFacture;
     private javax.swing.JButton boutonValiderConsult;
     private javax.swing.JButton boutonValiderFamille;
-    private javax.swing.JButton boutonValiderRechercheFacture;
     private javax.swing.JButton btn_CA;
     private javax.swing.JButton btn_Fact_add_line;
     private javax.swing.JButton btn_ajout_ligne_fact;
@@ -1378,6 +1332,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JButton btn_creaFact;
     private javax.swing.JButton btn_paiement_fact;
     private javax.swing.JButton btn_quit;
+    private javax.swing.JButton btn_quitter_fact;
     private javax.swing.JButton btn_visualiser_art;
     private javax.swing.JButton btn_voir_facture;
     private org.jdesktop.swingx.JXDatePicker dateDebut;

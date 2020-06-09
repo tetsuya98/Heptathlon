@@ -28,11 +28,15 @@ public interface HelloC extends Remote {
     
     public List<Facture> getFactures() throws Exception;
     
+    public void updateFacture(String ref) throws Exception;
+    
     public void addPaiement(String ref, String montant, String date, String moyen) throws Exception;
     
     public int getNumero(String table) throws Exception;
     
     public double getCA(String debut, String fin) throws Exception;
+    
+    public boolean isPaid(String ref) throws Exception;
 
     
     

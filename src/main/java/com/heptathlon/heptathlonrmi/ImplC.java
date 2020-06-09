@@ -101,18 +101,18 @@ public class ImplC implements HelloC{
     @Override
     public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant, String client) throws Exception {
         //int num = getNumero("facture") + 1;
-        String req = "INSERT INTO Factures (ref_facture, ref_article, famille, nom, quantite, prix_unitaire, montant, client) VALUES "
+        String req = "INSERT INTO Factures (ref_facture, ref_article, famille, nom, quantite, prix_unitaire, montant, client, payer) VALUES "
                                     + "("+ref+","+ref_article+",'"+famille+"','"+nom
-                                    +"',"+quantite+","+prix+","+montant+",'"+client+"');";
-        
+                                    +"',"+quantite+","+prix+","+montant+",'"+client+"',"+0+");";
         exeUpdate(req);
     }
 
     @Override
     public List<Facture> getFacture(int ref) throws Exception {
+        System.out.println("ici");
         List<Facture> list = new ArrayList<>(); 
         String requete = "SELECT * FROM Factures WHERE ref_facture ="+ref+";";
-
+        System.out.println(requete);
         try (ResultSet rs = exeQuery(requete)) {
             while(rs.next()) {
                 Facture facture = new Facture();
@@ -129,6 +129,20 @@ public class ImplC implements HelloC{
             } 
         } 
         return list;        
+    }
+    
+    @Override
+    public boolean isPaid(String ref) throws Exception {
+        String requete = "SELECT payer FROM Factures WHERE ref_facture ="+ref+";";
+        try (ResultSet rs = exeQuery(requete)) {
+            if (rs.first()){                    
+                if (rs.getInt("payer") == 0)
+                    return false;
+                else
+                    return true;
+            }
+        }
+        return false;
     }
     
     @Override
@@ -160,8 +174,7 @@ public class ImplC implements HelloC{
             req = "SELECT MAX(ref_facture) as num FROM Factures;";
         if ("article".equals(table))
             req = "SELECT MAX(numero) as num FROM Articles;";
-        
-        int num = 0;
+        int num = 1;
         try {
             ResultSet res = exeQuery(req);
             if (res.first()){
@@ -192,6 +205,13 @@ public class ImplC implements HelloC{
             }
         }
         return CA;
+    }
+    
+
+    @Override
+    public void updateFacture(String ref) throws Exception {
+        String req = "UPDATE Factures SET payer="+1+" WHERE ref_facture="+ref+";";
+        exeUpdate(req);
     }
     
 }

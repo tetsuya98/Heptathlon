@@ -14,6 +14,15 @@ public class Article implements java.io.Serializable {
     private int reference, nb_stock;
     private double prix_unitaire;
     private String famille, nom;
+    private boolean payer;
+
+    public boolean isPayer() {
+        return payer;
+    }
+
+    public void setPayer(boolean payer) {
+        this.payer = payer;
+    }
     
 public int getReference() { 
       return reference; 
