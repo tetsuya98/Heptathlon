@@ -20,7 +20,6 @@ com/heptathlon/heptathlonrmi/ServeurMagasin/ImplSM.class
 com/heptathlon/heptathlonrmi/ServeurMagasin/AccueilServeurMagasin$1.class
 com/heptathlon/heptathlonrmi/ServeurCentral/AccueilServeurCentral$4.class
 com/heptathlon/heptathlonrmi/AccueilCaisse.class
-com/heptathlon/heptathlonrmi/Objets/Client.class
 com/heptathlon/heptathlonrmi/AccueilCaisse$4.class
 com/heptathlon/heptathlonrmi/ImplC.class
 com/heptathlon/heptathlonrmi/AccueilCaisse$13.class

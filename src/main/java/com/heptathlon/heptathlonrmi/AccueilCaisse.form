@@ -453,7 +453,7 @@
                   <Component id="Label_Consult_Facture" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="boutonValiderRechercheFacture" alignment="0" pref="87" max="32767" attributes="0"/>
+                      <Component id="boutonValiderRechercheFacture" alignment="0" max="32767" attributes="0"/>
                       <Component id="TF_Consult_Facture" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="48" max="32767" attributes="0"/>

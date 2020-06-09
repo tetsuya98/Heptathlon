@@ -47,7 +47,8 @@ public class ImplSC implements HelloSC{
     
     @Override
     public void addArticle(String famille, String nom, double prix, int stock) throws Exception {
-        String req = "INSERT INTO heptathlon.Articles (famille, nom, prix_unitaire, nb_stock) VALUES ('"+famille+"','"+nom+"',"+prix+","+stock+");"; 
+        String req = "INSERT INTO heptathlon.Articles (famille, nom, prix_unitaire, nb_stock) VALUES ('"
+                +famille+"','"+nom+"',"+prix+","+stock+");"; 
         exeUpdate(req);
     }
     

@@ -435,7 +435,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                 stub = (HelloSC) UnicastRemoteObject.exportObject((HelloSC) obj, 0);
                 Registry registry = null;
                 registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1));
-                registry.rebind("HelloSM", stub);
+                registry.rebind("HelloSC", stub);
                 allume = true;
             } catch (Exception e) {
                 e.printStackTrace();

@@ -2,6 +2,8 @@ package com.heptathlon.heptathlonrmi;
 
 import com.heptathlon.heptathlonrmi.Objets.Facture;
 import com.heptathlon.heptathlonrmi.Objets.Article;
+import com.heptathlon.heptathlonrmi.ServeurCentral.HelloSC;
+import com.heptathlon.heptathlonrmi.ServeurCentral.ImplSC;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -23,6 +25,9 @@ public class AccueilCaisse extends javax.swing.JFrame {
     int nb_ligne_visualiser = 57;   
     double montantTotal = 0;
     double montantFacture = 0;
+    ImplC obj = new ImplC();
+    HelloC stub = null;
+    boolean allume = false;
  
     public AccueilCaisse() {
         initComponents();
@@ -935,17 +940,42 @@ public class AccueilCaisse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void start() {
+        if (!allume) {
+            try {
+                stub = (HelloC) UnicastRemoteObject.exportObject((HelloC) obj, 0);
+                Registry registry = null;
+                registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1));
+                registry.rebind("HelloC", stub);
+                allume = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } 
+    }
     
-    
+    private void showArticles() {
+        try{
+            start();
+            List<Article> listConsult = stub.getArticles();
+
+            int j=0;
+            for (Article s:listConsult) {   
+                liste_articles.setValueAt(s.getReference(), j, 0);
+                liste_articles.setValueAt(s.getFamille(), j, 1);
+                liste_articles.setValueAt(s.getNom(), j, 2);
+                liste_articles.setValueAt(s.getPrix_unitaire(), j, 3);
+                liste_articles.setValueAt(s.getNb_stock(), j, 4);
+                j++;                  
+            }
+        }catch (Exception e){
+            e.printStackTrace(); 
+        } 
+    }
     // BOUTON VISUALISER DEPUIS ACCUEIL
     private void btn_visualiser_artMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_visualiser_artMouseClicked
-        // CLIC VISUALISER STOCK depuis AccueilCaisse
         try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-
-            Registry r = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            r.rebind("HelloC",stub);
+            start();
             List<Article> list = stub.getArticles(); 
             int i=0;
             for (Article s:list) {
@@ -976,12 +1006,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // BOUTON CHERCHER PAR REFERENCE DEPUIS DIALOGCONSULTREFERENCE
     private void boutonValiderConsultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderConsultMouseClicked
         try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject(obj,0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.bind("HelloC", stub); 
-
-
+            start();
             List<Article> listConsult = stub.getArticle("ref", TF_Consult_Ref.getText());
 
             int i = 0;
@@ -1010,45 +1035,21 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // BOUTON CHERCHER PAR FAMILLE DEPUIS DIALOGCONSULTFAMILLE
     private void boutonValiderFamilleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderFamilleMouseClicked
         try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-            List<Article> list = stub.getArticles(); 
-            
-            int i=0;
-            for (Article s:list) {
-                liste_articles.setValueAt(s.getReference(), i, 0);
-                liste_articles.setValueAt(s.getFamille(), i, 1);
-                liste_articles.setValueAt(s.getNom(), i, 2);
-                liste_articles.setValueAt(s.getPrix_unitaire(), i, 3);
-                i++;                  
-            }  
-        } catch (Exception e) { 
-           e.printStackTrace();
-        }
-        
-        try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);           
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-
+            start();
             String famille_saisie = TF_Consult_Famille.getText();
-            String sql = "SELECT * FROM Articles WHERE famille='"+famille_saisie+"' AND nb_stock > 0;";
-            List<Article> listConsult = stub.getArticle("famille", famille_saisie);
+            List<Article> list = stub.getArticle("famille", famille_saisie);
             
             int j=0;
-            for (Article s:listConsult) {   
-                liste_articles.setValueAt(s.getReference(), j, 0);
-                liste_articles.setValueAt(s.getFamille(), j, 1);
-                liste_articles.setValueAt(s.getNom(), j, 2);
-                liste_articles.setValueAt(s.getPrix_unitaire(), j, 3);
-                liste_articles.setValueAt(s.getNb_stock(), j, 4);
+            for (Article l:list) {   
+                liste_articles.setValueAt(l.getReference(), j, 0);
+                liste_articles.setValueAt(l.getFamille(), j, 1);
+                liste_articles.setValueAt(l.getNom(), j, 2);
+                liste_articles.setValueAt(l.getPrix_unitaire(), j, 3);
+                liste_articles.setValueAt(l.getNb_stock(), j, 4);
                 j++;                  
             }        
             
-            int length = listConsult.size();
+            int length = list.size();
             while ( length+1 <= nb_ligne_visualiser ){
                 liste_articles.setValueAt(null,length, 0) ;  
                 liste_articles.setValueAt("", length, 1);
@@ -1070,13 +1071,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // BOUTON CREER FACTURE DEPUIS CREER FACTURE DIALOG
     private void boutonCreerFactureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonCreerFactureMouseClicked
         try { 
-            System.out.println("1");
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-            
+            start();       
             Object[][] ref_stock_prefacture = getTableData(Liste_PreFacture);
             int nb_ligne_prefacture = 0;
             while(ref_stock_prefacture[nb_ligne_prefacture][0] != null){
@@ -1089,11 +1084,11 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 nb_ligne_table_articles++; 
             }
             
-            int last_facture_numero = stub.getLastFacture("SELECT MAX(numero) FROM heptathlon.Factures;");
+            int last_facture_numero = stub.getNumero("facture");
             last_facture_numero++;           
             
-            for (int i = 0; i<nb_ligne_prefacture;i++){  
-                for (int j = 0; j<nb_ligne_table_articles;j++){
+            for (int i = 0; i < nb_ligne_prefacture;i++){  
+                for (int j = 0; j < nb_ligne_table_articles;j++){
                     if ( ref_stock_prefacture[i][0].equals(table_articles[j][0])){
                         int oldStock = Integer.parseInt(table_articles[j][4].toString());
                         int factStock = Integer.parseInt(ref_stock_prefacture[i][3].toString());
@@ -1103,48 +1098,20 @@ public class AccueilCaisse extends javax.swing.JFrame {
                         }else {
                             int newStock = oldStock - factStock;
                             table_articles[j][4] = newStock;
-                            String ref = table_articles[j][0].toString();
-                            
+                            stub.addFacture(last_facture_numero+"", table_articles[j][0].toString(), ref_stock_prefacture[i][1].toString(), 
+                                    ref_stock_prefacture[i][2].toString(), ref_stock_prefacture[i][3].toString(), 
+                                    ref_stock_prefacture[i][4].toString(), ref_stock_prefacture[i][5].toString());    
                             stub.updateArticles(newStock, table_articles[j][0].toString());
-
-                            String req2 = "INSERT INTO Factures (numero, ref_article, famille, nom, quantite, prix_unitaire, montant) VALUES "
-                                    + "("+last_facture_numero+","+ref+",'"+ref_stock_prefacture[i][1]+"','"+ref_stock_prefacture[i][2]
-                                    +"',"+ref_stock_prefacture[i][3]+","+ref_stock_prefacture[i][4]+","+ref_stock_prefacture[i][5]+");";
-                            stub.addFacture(req2);
                         }  
                     }      
                 }         
             } 
-            Label_numero_facture.setText("Numéro facture : " + (last_facture_numero)); 
-            String req3 = "SELECT numero FROM factures WHERE montant="+montantTotal+";";
-            int numero = stub.getNumeroFacture(req3);            
+            int num = stub.getNumero("facture") + 1;
+            Label_numero_facture.setText("Numéro facture : " + stub.getNumero("facture")); 
+            showArticles();
         } catch (Exception e) {           
             e.printStackTrace();
-        } 
-            
-        try{
-                     
-        // AFFICHAGE ARTICLES - MENU ACCUEIL
-        System.out.println("1");
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-            
-            List<Article> listConsult = stub.getArticles();
-
-            int j=0;
-            for (Article s:listConsult) {   
-                liste_articles.setValueAt(s.getReference(), j, 0);
-                liste_articles.setValueAt(s.getFamille(), j, 1);
-                liste_articles.setValueAt(s.getNom(), j, 2);
-                liste_articles.setValueAt(s.getPrix_unitaire(), j, 3);
-                liste_articles.setValueAt(s.getNb_stock(), j, 4);
-                j++;                  
-            }
-        }catch (Exception e){
-            e.printStackTrace(); 
-        }    
+        }          
     }//GEN-LAST:event_boutonCreerFactureMouseClicked
   
     // BOUTON AJOUTER LIGNE A LA PREFACTURE (PANIER)
@@ -1154,40 +1121,31 @@ public class AccueilCaisse extends javax.swing.JFrame {
       
     // BOUTON VALIDATION AJOUT ARTICLE DANS PREFACTURE
     private void btn_ajout_ligne_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ajout_ligne_factMouseClicked
+        start();
         List<Article> liste_pre_facture = new ArrayList<>();
         double montant_ligne = 0;
 
         try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-
             int ref_saisie = Integer.parseInt(TF_ref_art_fact.getText());
             int qte_saisie = Integer.parseInt(TF_qte_art_fact.getText());
-            String requete = "SELECT * FROM Articles WHERE reference="+ref_saisie+";";
-
-            Article article = stub.getArticlePourFacture(requete);
-            if (qte_saisie <= article.getNb_stock()){
-                if (article.getReference() != 0){
-                    Liste_PreFacture.setValueAt(article.getReference(), i, 0);
-                    Liste_PreFacture.setValueAt(article.getFamille(), i, 1);
-                    Liste_PreFacture.setValueAt(article.getNom(), i, 2);
-                    Liste_PreFacture.setValueAt(qte_saisie, i, 3);
-                    Liste_PreFacture.setValueAt(article.getPrix_unitaire(), i, 4);
-                    montant_ligne = qte_saisie * article.getPrix_unitaire();
-                    Liste_PreFacture.setValueAt(qte_saisie*article.getPrix_unitaire(), i, 5);
-                    montantTotal = montantTotal + montant_ligne;
-                    TF_Montant_total.setText(String.format("%.2f", montantTotal));  
-                    Label_stock_insuffisant.setText("Ajouté");
+            liste_pre_facture = stub.getArticle("ref", TF_ref_art_fact.getText()); 
+            for(Article s:liste_pre_facture) {
+                if (qte_saisie <= s.getNb_stock()){
+                        Liste_PreFacture.setValueAt(s.getReference(), i, 0);
+                        Liste_PreFacture.setValueAt(s.getFamille(), i, 1);
+                        Liste_PreFacture.setValueAt(s.getNom(), i, 2);
+                        Liste_PreFacture.setValueAt(qte_saisie, i, 3);
+                        Liste_PreFacture.setValueAt(s.getPrix_unitaire(), i, 4);
+                        montant_ligne = qte_saisie * s.getPrix_unitaire();
+                        Liste_PreFacture.setValueAt(qte_saisie*s.getPrix_unitaire(), i, 5);
+                        montantTotal = montantTotal + montant_ligne;
+                        TF_Montant_total.setText(String.format("%.2f", montantTotal));  
+                        Label_stock_insuffisant.setText("Ajouté");
                 } else {
+                    Label_stock_insuffisant.setText("Stock insuffisant");
                     i--;
-                } 
-            } else {
-                Label_stock_insuffisant.setText("Stock insuffisant");
-                i--;
+                }
             }
-
             for (Article s:liste_pre_facture) {
                 Liste_PreFacture.setValueAt(s.getReference(), i, 0);
                 Liste_PreFacture.setValueAt(s.getFamille(), i, 1);
@@ -1205,20 +1163,11 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // BOUTON RECHERCHER DEPUIS RECHERCHE FACTURE DIALOG
     private void boutonValiderRechercheFactureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderRechercheFactureMouseClicked
         Resultat_recherche_facture.setVisible(true);
+        start();
         int numero_facture_recherchee = Integer.parseInt(TF_Consult_Facture.getText());
         Label_Fact_numero.setText("Facture numéro " + numero_facture_recherchee);
-        // CLIC VISUALISER STOCK depuis AccueilCaisse
-        try { 
-            ImplC obj = new ImplC();
-            System.out.println("2");
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-            
-            
-                        System.out.println("2");
-            List<Facture> list = stub.getFacture(numero_facture_recherchee); 
-
+        try {
+            List<Facture> list = stub.getFacture(numero_facture_recherchee);
             int i=0;
             for (Facture s:list) {
                 Liste_resultat_recherche_fact.setValueAt(s.getRef_article(),i, 0);
@@ -1243,36 +1192,32 @@ public class AccueilCaisse extends javax.swing.JFrame {
 
     // BOUTON PAIEMENT FACTURE DEPUIS CONSULTATION FACTURE
     private void btn_paiement_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_paiement_factMouseClicked
-        try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);          
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-            
+        start();
+        try {   
             int num_facture = Integer.parseInt(TF_Consult_Facture.getText());
             double montant = montantFacture;    
             java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-
+            String moyen = "";
+            
             boolean cb = Radio_btn_CB.isSelected();
             boolean esp= Radio_btn_especes.isSelected();
             boolean other = Radio_btn_autres.isSelected();
             
             if(cb || esp || other){
                 if(cb && !esp && !other){
-                    String req ="INSERT INTO Paiements (num_facture, montant, date, mode) VALUES ("+num_facture+","+montant+",'"+date+"','CB');";
-                    stub.addPaiement(req);
+                    moyen = "CB";
                }
                 if(esp && !cb && !other){
-                    String req ="INSERT INTO Paiements (num_facture, montant, date, mode) VALUES ("+num_facture+","+montant+",'"+date+"','especes');";
-                    stub.addPaiement(req);         
+                    moyen = "especes";       
                 } 
                 if(other && !cb && !esp){
-                    String req ="INSERT INTO Paiements (num_facture, montant, date, mode) VALUES ("+num_facture+","+montant+",'"+date+"','autres');";
-                    stub.addPaiement(req);
+                    moyen = "autres";
                 }  
+                stub.addPaiement(num_facture+"", montant+"", date+"", moyen);
             } else {
                 Label_Fact_numero.setText("Veuillez sélectionner un mode de paiement");
             }      
+            Resultat_recherche_facture.setVisible(false);
         } catch (Exception e) {           
             e.printStackTrace();
         }   
@@ -1289,24 +1234,18 @@ public class AccueilCaisse extends javax.swing.JFrame {
  
     // BOUTON CALCULER CA DEPUIS ACCUEIL
     private void btn_calculerCAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_calculerCAMouseClicked
-        double CA = 0;     
+        start();
+        double CA = 0;
         try { 
-            ImplC obj = new ImplC();
-            HelloC stub = (HelloC) UnicastRemoteObject.exportObject((HelloC)obj, 0);
-            Registry registry = LocateRegistry.createRegistry(ThreadLocalRandom.current().nextInt(2000, 30000 + 1)); 
-            registry.rebind("HelloC",stub);
-
             Date dateD = dateDebut.getDate();        
             DateFormat oDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String szDate = oDateFormat.format(dateD);
+            String dDate = oDateFormat.format(dateD);
             
             Date dateF = dateFin.getDate();        
             DateFormat obDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String szbDate = obDateFormat.format(dateF);
+            String fDate = obDateFormat.format(dateF);
 
-            String req = "SELECT SUM(montant) FROM heptathlon.Paiements WHERE date BETWEEN '"+szDate+"' AND '"+szbDate+"';";
-            stub.getCA(req); 
-            CA = stub.getCA(req);
+            CA = stub.getCA(dDate, fDate);
         } catch (Exception e) {           
             e.printStackTrace();
         } 

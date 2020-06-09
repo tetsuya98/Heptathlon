@@ -74,6 +74,7 @@ public class ImplC implements HelloC{
             while(rs.next()) {
                 Facture facture = new Facture();
                 facture.setNumero(rs.getInt("numero"));
+                facture.setRef_facture(rs.getInt("ref_facture"));
                 facture.setRef_article(rs.getInt("ref_article"));
                 facture.setFamille(rs.getString("famille"));
                 facture.setNom(rs.getString("nom"));
@@ -91,59 +92,29 @@ public class ImplC implements HelloC{
         String req = "UPDATE Articles SET nb_stock="+stock+" WHERE reference="+ref+";";
         exeUpdate(req);
     }
-
-    @Override
-    public Article getArticlePourFacture(String requete) throws Exception {
-        
-        Article article = new Article();   
-        try { 
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement(); 
-
-            try (ResultSet rs = stmt.executeQuery(requete)) {
-                    if (rs.first()){                    
-                        article.setReference(rs.getInt("reference"));
-                        article.setFamille(rs.getString("famille"));
-                        article.setNom(rs.getString("nom"));
-                        article.setPrix_unitaire(rs.getDouble("prix_unitaire"));
-                        article.setNb_stock(rs.getInt("nb_stock"));
-                    } 
-            } 
-            stmt.close();
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return article;   
-    }
   
-    @Override
-    public int getNumeroFacture(String requete) throws Exception {
-        int numero = 0;
-        try { 
-                conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                Statement stmt = conn.createStatement();
-                numero = stmt.executeUpdate(requete);      
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        
-        return numero;
-    }  
+    
 
     @Override
-    public void addFacture(String requete) throws Exception {
-        exeUpdate(requete);
+    public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant) throws Exception {
+        //int num = getNumero("facture") + 1;
+        String req = "INSERT INTO Factures (ref_facture, ref_article, famille, nom, quantite, prix_unitaire, montant) VALUES "
+                                    + "("+ref+","+ref_article+",'"+famille+"','"+nom
+                                    +"',"+quantite+","+prix+","+montant+");";
+        
+        exeUpdate(req);
     }
 
     @Override
     public List<Facture> getFacture(int ref) throws Exception {
         List<Facture> list = new ArrayList<>(); 
-        String requete = "SELECT * FROM Factures WHERE numero ="+ref+";";
+        String requete = "SELECT * FROM Factures WHERE ref_facture ="+ref+";";
 
         try (ResultSet rs = exeQuery(requete)) {
             while(rs.next()) {
                 Facture facture = new Facture();
                 facture.setNumero(rs.getInt("numero"));
+                facture.setRef_facture(rs.getInt("ref_facture"));
                 facture.setRef_article(rs.getInt("ref_article"));
                 facture.setFamille(rs.getString("famille"));
                 facture.setNom(rs.getString("nom"));
@@ -163,7 +134,7 @@ public class ImplC implements HelloC{
         if ("ref".equals(champs))
             requete = "SELECT * FROM Articles WHERE reference = "+value+";";
         if ("famille".equals(champs))
-            requete = "SELECT * FROM Factures WHERE famille = "+value+";";
+            requete = "SELECT * FROM Articles WHERE famille = '"+value+"';";
         try (ResultSet rs = exeQuery(requete)) {
             while(rs.next()) {
                 Article article = new Article();
@@ -177,54 +148,45 @@ public class ImplC implements HelloC{
         } 
         return list;        
     }
-
+    
     @Override
-    public int getLastFacture(String requete) throws Exception {
-        int num_last_facture =0;
+    public int getNumero(String table) throws Exception {
+        String req = "";
+        if ("facture".equals(table))
+            req = "SELECT MAX(ref_facture) as num FROM Factures;";
+        if ("article".equals(table))
+            req = "SELECT MAX(numero) as num FROM Articles;";
+        
+        int num = 0;
         try {
-            Class.forName("com.mysql.jdbc.Driver"); 
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement(); 
-            
+            ResultSet res = exeQuery(req);
+            if (res.first()){
+                num = res.getInt("num");
+            } 
         } catch (Exception e){
             e.printStackTrace();
         }
+        return num;   
+    }
 
-        try (ResultSet rs = stmt.executeQuery(requete)) {
-            if (rs.first()){
-                num_last_facture = rs.getInt("MAX(numero)");
-            } 
-            rs.close();
-        } 
-        stmt.close();
+    
+    
 
-        return num_last_facture;   
+    @Override
+    public void addPaiement(String ref, String montant, String date, String moyen) throws Exception {
+        String req ="INSERT INTO Paiements (num_facture, montant, date, mode) VALUES ("+ref+","+montant+",'"+date+"','"+moyen+"');";
+        exeUpdate(req);     
     }
 
     @Override
-    public void addPaiement(String requete) throws Exception {
-        exeUpdate(requete);     
-    }
-
-    @Override
-    public double getCA(String requete) throws Exception {
-       double CA = 0 ;
-        try {
-            Class.forName("com.mysql.jdbc.Driver"); 
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement(); 
-            try (ResultSet rs = stmt.executeQuery(requete)) {
-                if (rs.first()){                    
-                    CA = rs.getDouble("SUM(montant)");
-                }
-                rs.close();
-            } 
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }      
-        stmt.close();
-        
+    public double getCA(String debut, String fin) throws Exception {
+        String req = "SELECT SUM(montant) FROM Paiements WHERE date BETWEEN '"+debut+"' AND '"+fin+"';";
+        double CA = 0 ;
+        try (ResultSet rs = exeQuery(req)) {
+            if (rs.first()){                    
+                CA = rs.getDouble("SUM(montant)");
+            }
+        }
         return CA;
     }
     

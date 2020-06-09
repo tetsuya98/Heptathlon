@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Facture implements java.io.Serializable {
     
-    private int numero, ref_article, quantite;
+    private int numero, ref_article, quantite, ref_facture;
     private double prix_unitaire, montant;
     private String famille, nom;
 
@@ -73,9 +73,13 @@ public class Facture implements java.io.Serializable {
         this.nom = nom;
     }
 
+    public void setRef_facture(int ref_facture) {
+        this.ref_facture = ref_facture;
+    }
     
-    
-
+    public int getRef_facture() {
+        return this.ref_facture;
+    }
 
    
 }
