@@ -509,7 +509,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
     //BOUTON VALIDER AJOUT STOCK
     private void boutonValiderAjoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderAjoutMouseClicked
-        start();
+        //start();
         if ("".equals(TF_Ajout_famille.getText()) || "".equals(TF_Ajout_nom.getText()) || "".equals(TF_Ajout_prixUnitaire.getText()) ||
                 "".equals(TF_Ajout_stock.getText())){
             boutonValiderAjout.setText("Données manquantes");
@@ -538,13 +538,13 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
     //BOUTON VISUALISER STOCKS
     private void btn_visu_scMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_visu_scMouseClicked
-        start();
+        //start();
         showArticles();
     }//GEN-LAST:event_btn_visu_scMouseClicked
 
     //BOUTON INTERFACE MODIFIER PRIX
     private void btn_modif_prix_scMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modif_prix_scMouseClicked
-        start();
+        //start();
         dialog_modif_prix_sc.setVisible(true);
         TF_Modif_ref.setText("");
         TF_Modif_NVprix.setText("");
@@ -552,7 +552,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
     //BOUTON VALIDER MODIFIER PRIX
     private void boutonValiderModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderModifMouseClicked
-        start();
+        //start();
         if ("".equals(TF_Modif_ref.getText()) || "".equals(TF_Modif_ref.getText())){
             boutonValiderModif.setText("Données manquantes"); 
         } else {
@@ -570,7 +570,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
     //BOUTON SUPPRIMER ARTICLE
     private void boutonValiderSuppression1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderSuppression1MouseClicked
-        start();
+        //start();
         if ("".equals(TF_Suppression_Reference1.getText())){
             boutonValiderSuppression1.setText("Données manquantes");
         } else {
@@ -586,7 +586,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
     //BOUTON INTERFACE SUPPRIMER
     private void btn_suppr_scMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_suppr_scMouseClicked
-        start();
+        //start();
         dialog_suppr_article_sc.setVisible(true);
     }//GEN-LAST:event_btn_suppr_scMouseClicked
 

@@ -10,15 +10,18 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Josselin
  */
 public class AccueilServeurMagasin extends javax.swing.JFrame {
-    boolean allume = false; // Serveur Central allumé ?
+    boolean allume = false;
     ImplSM obj = new ImplSM();
     HelloSM stub = null;
+    Registry registry = null;
+    int i; //Nb articles
 
     /**
      * Creates new form AccueilServerMagasin
@@ -43,7 +46,7 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_start_server.setText("Start serveur magasin");
+        btn_start_server.setText("Start");
         btn_start_server.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_start_serverMouseClicked(evt);
@@ -174,7 +177,7 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(Liste_article_sm);
 
-        btn_actu_prix_sm.setText("Actualiser prix");
+        btn_actu_prix_sm.setText("Actualiser");
         btn_actu_prix_sm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_actu_prix_smMouseClicked(evt);
@@ -187,23 +190,23 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_start_server, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_actu_prix_sm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btn_actu_prix_sm, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_start_server)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_actu_prix_sm)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_actu_prix_sm))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,9 +216,11 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
     private void start() {
         if (!allume) {
             try { 
-                stub = (HelloSM) UnicastRemoteObject.exportObject((HelloSM)obj, 0);
-                Registry registry = LocateRegistry.createRegistry(12345);
+                if (stub == null)
+                    stub = (HelloSM) UnicastRemoteObject.exportObject((HelloSM)obj, 0);
+                registry = LocateRegistry.createRegistry(12345);
                 registry.rebind("HelloSM", stub);
+                allume = true;
             } catch (Exception e) { 
                e.printStackTrace(); 
             }
@@ -225,7 +230,7 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
     private void showArticles() {
         try {
             List<Article> list = stub.getArticles();
-            int i = 0;
+            i = 0;
             for (Article s:list) {
                 Liste_article_sm.setValueAt(s.getReference(), i,0);
                 Liste_article_sm.setValueAt(s.getFamille(), i,1);
@@ -238,10 +243,9 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+      
     private void btn_start_serverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_start_serverMouseClicked
-        start();
-        showArticles();
+        start();  
     }//GEN-LAST:event_btn_start_serverMouseClicked
 
     private void btn_actu_prix_smMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actu_prix_smMouseClicked

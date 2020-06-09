@@ -15,7 +15,7 @@ public class Facture implements java.io.Serializable {
     
     private int numero, ref_article, quantite, ref_facture;
     private double prix_unitaire, montant;
-    private String famille, nom;
+    private String famille, nom, client;
 
     public int getNumero() {
         return numero;
@@ -81,5 +81,12 @@ public class Facture implements java.io.Serializable {
         return this.ref_facture;
     }
 
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
    
 }

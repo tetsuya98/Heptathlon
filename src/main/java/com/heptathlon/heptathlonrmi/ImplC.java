@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -70,7 +72,7 @@ public class ImplC implements HelloC{
     @Override
     public List<Facture> getFactures() throws Exception {   
         List<Facture> list = new ArrayList<>();
-        try (ResultSet rs = exeQuery("SELECT * FROM heptathlon.Articles;")) {
+        try (ResultSet rs = exeQuery("SELECT * FROM Factures;")) {
             while(rs.next()) {
                 Facture facture = new Facture();
                 facture.setNumero(rs.getInt("numero"));
@@ -81,6 +83,7 @@ public class ImplC implements HelloC{
                 facture.setQuantite(rs.getInt("quantite"));
                 facture.setPrix_unitaire(rs.getDouble("prix_unitaire"));
                 facture.setMontant(rs.getDouble("montant"));
+                facture.setClient(rs.getString("client"));
                 list.add(facture);
             } 
         } 
@@ -96,11 +99,11 @@ public class ImplC implements HelloC{
     
 
     @Override
-    public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant) throws Exception {
+    public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant, String client) throws Exception {
         //int num = getNumero("facture") + 1;
-        String req = "INSERT INTO Factures (ref_facture, ref_article, famille, nom, quantite, prix_unitaire, montant) VALUES "
+        String req = "INSERT INTO Factures (ref_facture, ref_article, famille, nom, quantite, prix_unitaire, montant, client) VALUES "
                                     + "("+ref+","+ref_article+",'"+famille+"','"+nom
-                                    +"',"+quantite+","+prix+","+montant+");";
+                                    +"',"+quantite+","+prix+","+montant+",'"+client+"');";
         
         exeUpdate(req);
     }
@@ -121,6 +124,7 @@ public class ImplC implements HelloC{
                 facture.setQuantite(rs.getInt("quantite"));
                 facture.setPrix_unitaire(rs.getDouble("prix_unitaire"));
                 facture.setMontant(rs.getDouble("montant"));
+                facture.setClient(rs.getString("client"));
                 list.add(facture);
             } 
         } 

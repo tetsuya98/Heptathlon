@@ -22,7 +22,7 @@ public interface HelloC extends Remote {
     
     public void updateArticles(int stock, String ref) throws Exception;
     
-    public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant) throws Exception;
+    public void addFacture(String ref, String ref_article, String famille, String nom, String quantite, String prix, String montant, String client) throws Exception;
     
     public List<Facture> getFacture(int ref) throws Exception;
     
