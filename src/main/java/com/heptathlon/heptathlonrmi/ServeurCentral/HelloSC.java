@@ -16,6 +16,6 @@ import java.util.List;
 public interface HelloSC extends Remote {
     public void addArticle(String famille, String nom, double prix, int stock) throws Exception;
     public List<Article> getArticles() throws Exception;
-    public void updateArticle(String ref, String prix) throws Exception;
+    public void updateArticle(String ref, String value, String champ) throws Exception;
     public void deleteArticle(String ref) throws Exception;
 }

@@ -40,6 +40,12 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
         Label_Suppression_Reference1 = new javax.swing.JLabel();
         TF_Suppression_Reference1 = new javax.swing.JTextField();
         boutonValiderSuppression1 = new javax.swing.JButton();
+        dialog_modif_stock_sc = new javax.swing.JDialog();
+        Label_Modif_Ref_Stock = new javax.swing.JLabel();
+        Label_Modif_Stock = new javax.swing.JLabel();
+        TF_Modif_ref_stock = new javax.swing.JTextField();
+        TF_Modif_NVstock = new javax.swing.JTextField();
+        boutonValiderModifStock = new javax.swing.JButton();
         btn_start_central = new javax.swing.JButton();
         Label_Ajout_Famille = new javax.swing.JLabel();
         TF_Ajout_famille = new javax.swing.JTextField();
@@ -55,6 +61,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
         btn_suppr_sc = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Liste_article_sc = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         dialog_modif_prix_sc.setTitle("Modifier article");
         dialog_modif_prix_sc.setAlwaysOnTop(true);
@@ -159,6 +166,61 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(boutonValiderSuppression1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        dialog_modif_stock_sc.setSize(new java.awt.Dimension(450, 450));
+
+        Label_Modif_Ref_Stock.setText("Référence");
+        Label_Modif_Ref_Stock.setMaximumSize(new java.awt.Dimension(450, 450));
+
+        Label_Modif_Stock.setText("Nouveau stock");
+        Label_Modif_Stock.setMaximumSize(new java.awt.Dimension(450, 450));
+
+        TF_Modif_ref_stock.setToolTipText("");
+        TF_Modif_ref_stock.setMaximumSize(new java.awt.Dimension(450, 450));
+
+        TF_Modif_NVstock.setToolTipText("");
+        TF_Modif_NVstock.setMaximumSize(new java.awt.Dimension(450, 450));
+
+        boutonValiderModifStock.setText("Valider");
+        boutonValiderModifStock.setToolTipText("");
+        boutonValiderModifStock.setMaximumSize(new java.awt.Dimension(450, 450));
+        boutonValiderModifStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boutonValiderModifStockMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_modif_stock_scLayout = new javax.swing.GroupLayout(dialog_modif_stock_sc.getContentPane());
+        dialog_modif_stock_sc.getContentPane().setLayout(dialog_modif_stock_scLayout);
+        dialog_modif_stock_scLayout.setHorizontalGroup(
+            dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_modif_stock_scLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_Modif_Ref_Stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_Modif_Stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addGroup(dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TF_Modif_ref_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TF_Modif_NVstock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boutonValiderModifStock, javax.swing.GroupLayout.PREFERRED_SIZE, 81, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+        dialog_modif_stock_scLayout.setVerticalGroup(
+            dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_modif_stock_scLayout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addGroup(dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TF_Modif_ref_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_Modif_Ref_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_modif_stock_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Modif_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TF_Modif_NVstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(boutonValiderModifStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -360,6 +422,13 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
             Liste_article_sc.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        jButton1.setText("Modifier stock");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_modif_stock(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -378,15 +447,17 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                             .addComponent(Label_Ajout_PU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Label_Ajout_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_suppr_sc, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                            .addComponent(btn_modif_prix_sc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_visu_sc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TF_Ajout_nom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TF_Ajout_famille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TF_Ajout_prixUnitaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TF_Ajout_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boutonValiderAjout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_suppr_sc, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btn_modif_prix_sc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_visu_sc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TF_Ajout_nom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TF_Ajout_famille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TF_Ajout_prixUnitaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TF_Ajout_stock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(boutonValiderAjout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(45, 45, 45)))
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -396,8 +467,8 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btn_start_central)
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -417,13 +488,15 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                             .addComponent(TF_Ajout_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(boutonValiderAjout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_visu_sc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_modif_prix_sc)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_suppr_sc)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -559,7 +632,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
             try {
                 String ref = TF_Modif_ref.getText();
                 String prix = TF_Modif_NVprix.getText();
-                stub.updateArticle(ref, prix);
+                stub.updateArticle(ref, prix, "prix_unitaire");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -593,6 +666,27 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
     private void btn_modif_prix_scActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modif_prix_scActionPerformed
 
     }//GEN-LAST:event_btn_modif_prix_scActionPerformed
+
+    private void btn_modif_stock(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modif_stock
+        dialog_modif_stock_sc.setVisible(true);
+    }//GEN-LAST:event_btn_modif_stock
+
+    private void boutonValiderModifStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderModifStockMouseClicked
+        //start();
+        if ("".equals(TF_Modif_ref_stock.getText()) || "".equals(TF_Modif_ref_stock.getText())){
+            boutonValiderModifStock.setText("Données manquantes"); 
+        } else {
+            try {
+                String ref = TF_Modif_ref_stock.getText();
+                String stock = TF_Modif_NVstock.getText();
+                stub.updateArticle(ref, stock, "nb_stock");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        reset();
+        showArticles();
+    }//GEN-LAST:event_boutonValiderModifStockMouseClicked
 
     /**
      * @param args the command line arguments
@@ -637,6 +731,8 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Ajout_stock;
     private javax.swing.JLabel Label_Modif_NVprix;
     private javax.swing.JLabel Label_Modif_Ref;
+    private javax.swing.JLabel Label_Modif_Ref_Stock;
+    private javax.swing.JLabel Label_Modif_Stock;
     private javax.swing.JLabel Label_Suppression_Reference1;
     private javax.swing.JTable Liste_article_sc;
     private javax.swing.JTextField TF_Ajout_famille;
@@ -644,17 +740,22 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Ajout_prixUnitaire;
     private javax.swing.JTextField TF_Ajout_stock;
     private javax.swing.JTextField TF_Modif_NVprix;
+    private javax.swing.JTextField TF_Modif_NVstock;
     private javax.swing.JTextField TF_Modif_ref;
+    private javax.swing.JTextField TF_Modif_ref_stock;
     private javax.swing.JTextField TF_Suppression_Reference1;
     private javax.swing.JButton boutonValiderAjout;
     private javax.swing.JButton boutonValiderModif;
+    private javax.swing.JButton boutonValiderModifStock;
     private javax.swing.JButton boutonValiderSuppression1;
     private javax.swing.JButton btn_modif_prix_sc;
     private javax.swing.JButton btn_start_central;
     private javax.swing.JButton btn_suppr_sc;
     private javax.swing.JButton btn_visu_sc;
     private javax.swing.JDialog dialog_modif_prix_sc;
+    private javax.swing.JDialog dialog_modif_stock_sc;
     private javax.swing.JDialog dialog_suppr_article_sc;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

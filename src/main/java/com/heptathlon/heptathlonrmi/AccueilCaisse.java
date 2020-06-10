@@ -471,8 +471,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
                             .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Calcul_CA_DialogLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(Label_CA_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Label_CA_Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_calculerCA, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(362, Short.MAX_VALUE))
         );
@@ -1050,8 +1050,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
             CA = stub.getCA(dDate, fDate);
         } catch (Exception e) {           
             e.printStackTrace();
-        } 
-        Label_CA_Total.setText("Chiffre d'Affaire : "+String.valueOf(CA));     
+        }
+        Label_CA_Total.setText("Chiffre d'Affaire : " + String.valueOf(CA));     
     }//GEN-LAST:event_btn_calculerCAMouseClicked
 
     private void dateDebutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateDebutActionPerformed

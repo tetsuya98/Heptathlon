@@ -245,7 +245,8 @@ public class AccueilServeurMagasin extends javax.swing.JFrame {
     }
       
     private void btn_start_serverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_start_serverMouseClicked
-        start();  
+        start();
+        showArticles();
     }//GEN-LAST:event_btn_start_serverMouseClicked
 
     private void btn_actu_prix_smMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actu_prix_smMouseClicked

@@ -70,8 +70,8 @@ public class ImplSC implements HelloSC{
     }
     
     @Override
-    public void updateArticle(String ref, String prix) throws Exception {
-        String req = "UPDATE Articles SET prix_unitaire ="+prix+" WHERE reference="+ref+";";
+    public void updateArticle(String ref,String value, String champs) throws Exception {
+        String req = "UPDATE Articles SET "+champs+" ="+value+" WHERE reference="+ref+";";
         exeUpdate(req);
     }
     
