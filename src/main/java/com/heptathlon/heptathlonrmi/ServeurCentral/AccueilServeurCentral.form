@@ -278,7 +278,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btn_start_central">
       <Properties>
-        <Property name="text" type="java.lang.String" value="D&#xe9;marrer serveur central"/>
+        <Property name="text" type="java.lang.String" value="Start"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_start_centralMouseClicked"/>
@@ -326,7 +326,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="boutonValiderAjout">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter au serveur central"/>
+        <Property name="text" type="java.lang.String" value="Nouvelle article"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[450, 450]"/>
@@ -362,7 +362,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_visu_sc">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Visualiser stock serveur central"/>
+        <Property name="text" type="java.lang.String" value="Visualiser stock"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_visu_scMouseClicked"/>

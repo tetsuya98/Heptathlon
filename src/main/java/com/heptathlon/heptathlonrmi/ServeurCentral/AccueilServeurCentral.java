@@ -96,7 +96,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                 .addGroup(dialog_modif_prix_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TF_Modif_ref, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TF_Modif_NVprix, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boutonValiderModif, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
+                    .addComponent(boutonValiderModif, javax.swing.GroupLayout.PREFERRED_SIZE, 81, Short.MAX_VALUE))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         dialog_modif_prix_scLayout.setVerticalGroup(
@@ -145,7 +145,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
                 .addComponent(Label_Suppression_Reference1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(dialog_suppr_article_scLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boutonValiderSuppression1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(boutonValiderSuppression1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(TF_Suppression_Reference1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -163,7 +163,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_start_central.setText("Démarrer serveur central");
+        btn_start_central.setText("Start");
         btn_start_central.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_start_centralMouseClicked(evt);
@@ -185,7 +185,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
         TF_Ajout_stock.setToolTipText("");
         TF_Ajout_stock.setMaximumSize(new java.awt.Dimension(450, 450));
 
-        boutonValiderAjout.setText("Ajouter au serveur central");
+        boutonValiderAjout.setText("Nouvelle article");
         boutonValiderAjout.setToolTipText("");
         boutonValiderAjout.setMaximumSize(new java.awt.Dimension(450, 450));
         boutonValiderAjout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,7 +203,7 @@ public class AccueilServeurCentral extends javax.swing.JFrame {
         Label_Ajout_PU.setText("Prix unitaire :");
         Label_Ajout_PU.setMaximumSize(new java.awt.Dimension(450, 450));
 
-        btn_visu_sc.setText("Visualiser stock serveur central");
+        btn_visu_sc.setText("Visualiser stock");
         btn_visu_sc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_visu_scMouseClicked(evt);

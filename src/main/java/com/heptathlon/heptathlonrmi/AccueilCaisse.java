@@ -52,14 +52,6 @@ public class AccueilCaisse extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ConsultationRef = new javax.swing.JDialog();
-        Label_Consult_Ref = new javax.swing.JLabel();
-        TF_Consult_Ref = new javax.swing.JTextField();
-        boutonValiderConsult = new javax.swing.JButton();
-        ConsultationFamille = new javax.swing.JDialog();
-        Label_Consult_Famille = new javax.swing.JLabel();
-        TF_Consult_Famille = new javax.swing.JTextField();
-        boutonValiderFamille = new javax.swing.JButton();
         CreationFacture = new javax.swing.JDialog();
         boutonCreerFacture = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,98 +98,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
         Tableau_factures = new javax.swing.JScrollPane();
         liste_factures = new javax.swing.JTable();
         btn_voir_facture = new javax.swing.JButton();
-
-        ConsultationRef.setTitle("Consultation par référence");
-        ConsultationRef.setAlwaysOnTop(true);
-        ConsultationRef.setLocation(new java.awt.Point(150, 150));
-        ConsultationRef.setResizable(false);
-        ConsultationRef.setSize(new java.awt.Dimension(450, 450));
-
-        Label_Consult_Ref.setText("Recherche par référence");
-        Label_Consult_Ref.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        TF_Consult_Ref.setToolTipText("");
-        TF_Consult_Ref.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        boutonValiderConsult.setText("Valider");
-        boutonValiderConsult.setToolTipText("");
-        boutonValiderConsult.setMaximumSize(new java.awt.Dimension(450, 450));
-        boutonValiderConsult.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boutonValiderConsultMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ConsultationRefLayout = new javax.swing.GroupLayout(ConsultationRef.getContentPane());
-        ConsultationRef.getContentPane().setLayout(ConsultationRefLayout);
-        ConsultationRefLayout.setHorizontalGroup(
-            ConsultationRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationRefLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(Label_Consult_Ref, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(ConsultationRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boutonValiderConsult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_Consult_Ref, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        ConsultationRefLayout.setVerticalGroup(
-            ConsultationRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationRefLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(ConsultationRefLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TF_Consult_Ref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_Consult_Ref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(boutonValiderConsult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-
-        ConsultationFamille.setTitle("Consultation par famille");
-        ConsultationFamille.setAlwaysOnTop(true);
-        ConsultationFamille.setLocation(new java.awt.Point(150, 150));
-        ConsultationFamille.setResizable(false);
-        ConsultationFamille.setSize(new java.awt.Dimension(450, 450));
-
-        Label_Consult_Famille.setText("Recherche par famille");
-        Label_Consult_Famille.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        TF_Consult_Famille.setToolTipText("");
-        TF_Consult_Famille.setMaximumSize(new java.awt.Dimension(450, 450));
-
-        boutonValiderFamille.setText("Valider");
-        boutonValiderFamille.setToolTipText("");
-        boutonValiderFamille.setMaximumSize(new java.awt.Dimension(450, 450));
-        boutonValiderFamille.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boutonValiderFamilleMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ConsultationFamilleLayout = new javax.swing.GroupLayout(ConsultationFamille.getContentPane());
-        ConsultationFamille.getContentPane().setLayout(ConsultationFamilleLayout);
-        ConsultationFamilleLayout.setHorizontalGroup(
-            ConsultationFamilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationFamilleLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(Label_Consult_Famille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(ConsultationFamilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boutonValiderFamille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TF_Consult_Famille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        ConsultationFamilleLayout.setVerticalGroup(
-            ConsultationFamilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ConsultationFamilleLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(ConsultationFamilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TF_Consult_Famille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_Consult_Famille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(boutonValiderFamille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        TF_ref = new javax.swing.JTextField();
+        TF_fam = new javax.swing.JTextField();
 
         CreationFacture.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         CreationFacture.setTitle("Création Facture");
@@ -701,12 +603,22 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 btn_consultRefMouseClicked(evt);
             }
         });
+        btn_consultRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultRefActionPerformed(evt);
+            }
+        });
 
         btn_consultFamille.setText("Chercher Famille");
         btn_consultFamille.setPreferredSize(new java.awt.Dimension(119, 29));
         btn_consultFamille.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_consultFamilleMouseClicked(evt);
+            }
+        });
+        btn_consultFamille.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultFamilleActionPerformed(evt);
             }
         });
 
@@ -832,6 +744,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
         });
 
+        TF_ref.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -841,21 +755,31 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btn_consultRef, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_visualiser_art, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_consultFamille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_voir_facture, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_creaFact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_consultFact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_quit))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_CA, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_consultRef, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TF_ref))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(TF_fam))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_CA, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_consultFamille, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Tableau_factures, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Tableau_articles, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 12, Short.MAX_VALUE))))
+                        .addGap(12, 12, 12))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -864,11 +788,15 @@ public class AccueilCaisse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_visualiser_art)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_consultRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_consultRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_ref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_consultFamille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TF_fam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123)
                         .addComponent(btn_voir_facture)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_creaFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -941,21 +869,9 @@ public class AccueilCaisse extends javax.swing.JFrame {
 
     // BOUTON CONSULTATION PAR REFERENCE DEPUIS ACCUEIL
     private void btn_consultRefMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_consultRefMouseClicked
-        ConsultationRef.setVisible(true);
-        TF_Consult_Ref.setText("");
-    }//GEN-LAST:event_btn_consultRefMouseClicked
-  
-    // BOUTON CONSULTATION PAR FAMILLE DEPUIS ACCUEIL
-    private void btn_consultFamilleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_consultFamilleMouseClicked
-        ConsultationFamille.setVisible(true);
-        TF_Consult_Famille.setText("");      
-    }//GEN-LAST:event_btn_consultFamilleMouseClicked
- 
-    // BOUTON CHERCHER PAR REFERENCE DEPUIS DIALOGCONSULTREFERENCE
-    private void boutonValiderConsultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderConsultMouseClicked
         try { 
             start();
-            List<Article> listConsult = stub.getArticle("ref", TF_Consult_Ref.getText());
+            List<Article> listConsult = stub.getArticle("ref", TF_ref.getText());
 
             int i = 0;
             for (Article s:listConsult) {   
@@ -978,13 +894,13 @@ public class AccueilCaisse extends javax.swing.JFrame {
             liste_articles.setValueAt(null, j, 4);
             j++;
         }
-    }//GEN-LAST:event_boutonValiderConsultMouseClicked
-   
-    // BOUTON CHERCHER PAR FAMILLE DEPUIS DIALOGCONSULTFAMILLE
-    private void boutonValiderFamilleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonValiderFamilleMouseClicked
+    }//GEN-LAST:event_btn_consultRefMouseClicked
+  
+    // BOUTON CONSULTATION PAR FAMILLE DEPUIS ACCUEIL
+    private void btn_consultFamilleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_consultFamilleMouseClicked
         try { 
             start();
-            String famille_saisie = TF_Consult_Famille.getText();
+            String famille_saisie = TF_fam.getText();
             List<Article> list = stub.getArticle("famille", famille_saisie);
             
             int j=0;
@@ -1008,9 +924,9 @@ public class AccueilCaisse extends javax.swing.JFrame {
             }
         } catch (Exception e) { 
            e.printStackTrace();
-        } 
-    }//GEN-LAST:event_boutonValiderFamilleMouseClicked
-  
+        }     
+    }//GEN-LAST:event_btn_consultFamilleMouseClicked
+ 
     // BOUTON CREATION FACTURE DEPUIS ACCUEIL
     private void btn_creaFactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_creaFactMouseClicked
         CreationFacture.setVisible(true);    
@@ -1054,7 +970,7 @@ public class AccueilCaisse extends javax.swing.JFrame {
                     }      
                 }         
             } 
-            Label_numero_facture.setText("Numéro facture : " + stub.getNumero("facture")); 
+            Label_numero_facture.setText("Numéro facture : " + stub.getNumero("facture"));
             showArticles();
         } catch (Exception e) {           
             e.printStackTrace();
@@ -1251,6 +1167,14 @@ public class AccueilCaisse extends javax.swing.JFrame {
         Resultat_recherche_facture.setVisible(false);
     }//GEN-LAST:event_btn_quitter_factActionPerformed
 
+    private void btn_consultRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultRefActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_consultRefActionPerformed
+
+    private void btn_consultFamilleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultFamilleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_consultFamilleActionPerformed
+
     private void btn_quitMouseClicked(java.awt.event.ActionEvent evt) {
         
     }
@@ -1283,12 +1207,8 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JDialog AjoutArtFactDialog;
     private javax.swing.JDialog Calcul_CA_Dialog;
     private javax.swing.JComboBox<String> ComboPay;
-    private javax.swing.JDialog ConsultationFamille;
-    private javax.swing.JDialog ConsultationRef;
     private javax.swing.JDialog CreationFacture;
     private javax.swing.JLabel Label_CA_Total;
-    private javax.swing.JLabel Label_Consult_Famille;
-    private javax.swing.JLabel Label_Consult_Ref;
     private javax.swing.JLabel Label_Fact_numero;
     private javax.swing.JLabel Label_ajout_art_qte_fact;
     private javax.swing.JLabel Label_ajout_art_ref_fact;
@@ -1301,19 +1221,17 @@ public class AccueilCaisse extends javax.swing.JFrame {
     private javax.swing.JTable Liste_PreFacture;
     private javax.swing.JTable Liste_resultat_recherche_fact;
     private javax.swing.JDialog Resultat_recherche_facture;
-    private javax.swing.JTextField TF_Consult_Famille;
-    private javax.swing.JTextField TF_Consult_Ref;
     private javax.swing.JTextField TF_Montant_total;
     private javax.swing.JTextField TF_Montant_total_Consult_Fact;
     private javax.swing.JTextField TF_chercher_facture;
     private javax.swing.JTextField TF_client_nom;
+    private javax.swing.JTextField TF_fam;
     private javax.swing.JTextField TF_qte_art_fact;
+    private javax.swing.JTextField TF_ref;
     private javax.swing.JTextField TF_ref_art_fact;
     private javax.swing.JScrollPane Tableau_articles;
     private javax.swing.JScrollPane Tableau_factures;
     private javax.swing.JButton boutonCreerFacture;
-    private javax.swing.JButton boutonValiderConsult;
-    private javax.swing.JButton boutonValiderFamille;
     private javax.swing.JButton btn_CA;
     private javax.swing.JButton btn_Fact_add_line;
     private javax.swing.JButton btn_ajout_ligne_fact;

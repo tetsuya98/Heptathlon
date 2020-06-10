@@ -16,6 +16,15 @@ public class Facture implements java.io.Serializable {
     private int numero, ref_article, quantite, ref_facture;
     private double prix_unitaire, montant;
     private String famille, nom, client;
+    private int payer;
+
+    public int isPayer() {
+        return payer;
+    }
+
+    public void setPayer(int payer) {
+        this.payer = payer;
+    }
 
     public int getNumero() {
         return numero;

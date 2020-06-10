@@ -84,6 +84,7 @@ public class ImplC implements HelloC{
                 facture.setPrix_unitaire(rs.getDouble("prix_unitaire"));
                 facture.setMontant(rs.getDouble("montant"));
                 facture.setClient(rs.getString("client"));
+                facture.setPayer(rs.getInt("payer"));
                 list.add(facture);
             } 
         } 
@@ -109,10 +110,8 @@ public class ImplC implements HelloC{
 
     @Override
     public List<Facture> getFacture(int ref) throws Exception {
-        System.out.println("ici");
         List<Facture> list = new ArrayList<>(); 
         String requete = "SELECT * FROM Factures WHERE ref_facture ="+ref+";";
-        System.out.println(requete);
         try (ResultSet rs = exeQuery(requete)) {
             while(rs.next()) {
                 Facture facture = new Facture();
@@ -125,6 +124,7 @@ public class ImplC implements HelloC{
                 facture.setPrix_unitaire(rs.getDouble("prix_unitaire"));
                 facture.setMontant(rs.getDouble("montant"));
                 facture.setClient(rs.getString("client"));
+                facture.setPayer(rs.getInt("payer"));
                 list.add(facture);
             } 
         } 
