@@ -855,12 +855,14 @@ public class AccueilCaisse extends javax.swing.JFrame {
             List<Article> list = stub.getArticles(); 
             int i=0;
             for (Article s:list) {
-                liste_articles.setValueAt(s.getReference(), i,0);
-                liste_articles.setValueAt(s.getFamille(), i,1);
-                liste_articles.setValueAt(s.getNom(), i,2);
-                liste_articles.setValueAt(s.getPrix_unitaire(), i,3);
-                liste_articles.setValueAt(s.getNb_stock(), i,4);
-                i++;                  
+                if (s.getNb_stock() != 0) {
+                    liste_articles.setValueAt(s.getReference(), i,0);
+                    liste_articles.setValueAt(s.getFamille(), i,1);
+                    liste_articles.setValueAt(s.getNom(), i,2);
+                    liste_articles.setValueAt(s.getPrix_unitaire(), i,3);
+                    liste_articles.setValueAt(s.getNb_stock(), i,4);
+                    i++;
+                }                  
             }  
         } catch (Exception e) { 
             e.printStackTrace();
